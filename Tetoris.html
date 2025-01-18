@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetris Game</title>
+  <link rel="stylesheet" href="Tetoris.css">
+</head>
+<body>
+  <div id="container">
+    <div id="score-container">
+      <span id="score">Score: 0</span>
+      <button id="existing-button">戻る</button>
+    </div>
+    <div id="game-container">
+      <div id="playfield"></div>
+      <div id="next-block-container">
+        <span>Next:</span>
+        <div id="next-field"></div>
+      </div>
+    </div>
+    <div id="game-over">
+      <div class="overlay">
+        <h1>Game Over!</h1>
+        <button id="retry-button">Retry</button>
+      </div>
+    </div>
+    <div id="controller">
+      <div id="controller-row">
+        <button id="up-button">↑</button>
+      </div>
+      <div id="controller-row">
+        <button id="left-button">←</button>
+        <button id="right-button">→</button>
+      </div>
+      <div id="controller-row">
+        <button id="down-button">↓</button>
+      </div>
+    </div>
+  </div>
+  <script src="Tetoris.js"></script>
+</body>
+</html>
