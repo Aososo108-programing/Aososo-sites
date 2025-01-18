@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お知らせアニメーション</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .announcement-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        .announcement {
+            position: relative;
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .announcement:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .announcement img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .announcement-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .announcement-content h3 {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .announcement-content p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+
+        header {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          padding: 20px;
+          display: flex;
+          justify-content: center; /* ヘッダーの中央に配置 */
+          align-items: center; /* 縦方向の中央揃え */
+          background-color: #333;
+          color: white;
+          font-size: 30px;
+          opacity: 0;
+          transform: translateY(-20px);
+          animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        main {
+          margin-top: 100px; /* ヘッダーの高さを考慮 */
+          padding: 20px;
+        }
+
+        .announcement-container {
+          margin-top: 80px; /* コンテナ全体を下に移動 */
+        }
+
+        header .search-btn {
+          padding: 6px 12px;
+          background-color: #333;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 0.5em;
+          transition: background-color 0.3s;
+        }
+
+        header .search-btn:hover {
+          background-color: #444;
+        }
+
+        header .menu-btn {
+        padding: 6px 12px;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.5em;
+        transition: background-color 0.3s;
+        }
+        header .menu-btn:hover {
+            background-color: #444;
+        }
+
+        header.title {
+          margin-right: 20px; /* テキストとボタンの間にスペース */
+        }
+
+        .search-input {
+            margin-left: 20px;
+            padding: 7px 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.5em;
+            width: 200px;
+            transition: width 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #5e5856;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            right: -250px; /* メニューを右側に隠す */
+            width: 250px;
+            height: 100%;
+            background-color: #444;
+            color: white;
+            box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.5);
+            transition: right 0.3s ease;
+            padding-top: 50px;
+            z-index: 50;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu ul li {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+        }
+
+        .menu ul li a:hover {
+            background-color: #333;
+}
+    </style>
+
+</head>
+<body>
+<header>
+    <div class="title">Aososo blog</div>
+    <button class="search-btn">
+        <img src="search-btn.png" alt="検索ボタン">
+    </button>
+    <button class="menu-btn">
+        <img src="menu-btn.png" alt="メニューボタン">
+    </button>
+    <input type="text" id="search-input" class="search-input" placeholder="検索..." style="display: none;">
+</header>
+
+<div class="menu" id="menu"> <!-- メニュー部分を追加 -->
+    <ul>
+        <li><a href="#">ホーム</a></li>
+        <li><a href="#">お知らせ</a></li>
+        <li><a href="#">お問い合わせ</a></li>
+        <li><a href="#">設定</a></li>
+    </ul>
+</div>
+
+<div class="announcement-container">
+    <div class="announcement">
+        <img src="datachef_unicolor.png" alt="お知らせ1">
+        <div class="announcement-content">
+            <h3>テトリス！</h3>
+            <p>テトリスはこちらをクリック</p>
+        </div>
+    </div>
+    <div class="announcement">
+        <img src="datachef_unicolor.png" alt="お知らせ2">
+        <div class="announcement-content">
+            <h3>営業時間変更</h3>
+            <p>本日より営業時間が変更になりました。</p>
+        </div>
+    </div>
+    <div class="announcement">
+        <img src="datachef_unicolor.png" alt="お知らせ3">
+        <div class="announcement-content">
+            <h3>期間限定セール</h3>
+            <p>今だけ特別価格でご提供中！</p>
+        </div>
+    </div>
+    <div class="announcement">
+        <img src="datachef_unicolor.png" alt="お知らせ4">
+        <div class="announcement-content">
+            <h3>期間限定セール</h3>
+            <p>今だけ特別価格でご提供中！</p>
+        </div>
+    </div>
+</div>
+<button class="search-button">
+    <i class="fas fa-search"></i>
+
+    <script>
+        document.querySelector('.search-btn').addEventListener('click', function() {
+            const searchInput = document.getElementById('search-input');
+            searchInput.style.display = (searchInput.style.display === 'none' || searchInput.style.display === '') ? 'inline-block' : 'none';
+        });
+
+        document.getElementById('search-input').addEventListener('input', function() {
+            const searchText = this.value.toLowerCase();
+            const announcements = document.querySelectorAll('.announcement');
+
+            announcements.forEach(function(announcement) {
+                const content = announcement.querySelector('.announcement-content p').textContent.toLowerCase();
+                if (content.includes(searchText)) {
+                    announcement.style.display = 'block'; // 一致する場合は表示
+                } else {
+                    announcement.style.display = 'none'; // 一致しない場合は非表示
+                }
+            });
+        });
+
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            if (menu.style.right === '0px') {
+                menu.style.right = '-250px'; // メニューを隠す
+            } else {
+                menu.style.right = '0'; // メニューを表示
+            }
+        });
+        // 全ての .announcement 要素を取得
+        const announcements = document.querySelectorAll('.announcement');
+
+        // 各 .announcement 要素にクリックイベントを追加
+        announcements.forEach((announcement, index) => {
+            announcement.addEventListener('click', () => {
+                // 各お知らせに対応したページパスを指定
+                const pages = [
+                    'games/Tetoris/Tetoris.html', // お知らせ1のページ
+                    'hours-change.html', // お知らせ2のページ
+                    'sale-limited.html', // お知らせ3のページ
+                    'sale-limited2.html' // お知らせ4のページ
+                ];
+
+                // 該当するページに遷移
+                window.location.href = pages[index];
+            });
+        });
+
+
+    </script>
+
+
+</body>
+</html>
